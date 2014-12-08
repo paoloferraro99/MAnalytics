@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-MAnalytics::Application.config.secret_key_base = '87e7a3fa6fd983f8702b23abfa5e3641d39ce5e319a80f829dcc80cb59bcb8d1638a85732abcef97dc5ee9f691e61c61f384828eb4e28aa0cb14707fc7cd0274'
+MAnalytics::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
