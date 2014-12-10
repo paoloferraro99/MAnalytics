@@ -9,6 +9,13 @@
 <body>
 
    <div class="container">
+      <ul class="nav nav-tabs">
+
+      <div class="pull-left user-info">
+         <% if current_user %>
+             <%= link_to "Your Websites", sites_path %>
+         <% end %>
+      </div>
 
       <div class="pull-right user-info">
          <% if current_user %>
@@ -17,6 +24,7 @@
             <%= link_to "Sign In", new_user_session_path %>
          <% end %>
       </div>
+   </ul>
 
       <% if flash[:notice] %>
          <div class="alert alert-success">
