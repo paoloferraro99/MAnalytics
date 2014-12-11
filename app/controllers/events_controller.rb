@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 
 def create
     @site = Site.find(params[:id])
-    @events = @site.events
+    @site.events.build(event_params)
+
   end
 
 
