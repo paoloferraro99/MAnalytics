@@ -3,7 +3,7 @@ MAnalytics::Application.routes.draw do
   devise_for :users
 
   resources :sites
-
+  resources :events, only: [:create]
 
 
 

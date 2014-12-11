@@ -7,6 +7,7 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
+    @events = @site.events
   end
 
   def new

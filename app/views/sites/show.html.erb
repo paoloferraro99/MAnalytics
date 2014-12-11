@@ -6,3 +6,13 @@
       <%= link_to "Delete Site", [@site], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this site?' } %>
     </div>
 </div>
+
+
+<div class="col-md-8">
+  
+  <% @events.each do |event| %>
+    <br/><%= event.name %>
+  <% end %>
+  <% if @events.empty? %>No Events to show<% end %>
+
+</div>
