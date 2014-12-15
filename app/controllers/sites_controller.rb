@@ -7,7 +7,9 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
-    @events = @site.events
+    # @events = @site.events
+    @events = Event.all
+
   end
 
   def new
@@ -16,14 +18,13 @@ class SitesController < ApplicationController
 
   def create
     @site = current_user.sites.build(site_params)
-    # @wiki = Wiki.new(wiki_params)
 
 
     if @site.save
-      flash[:notice] = "Your wiki was saved."
+      flash[:notice] = "Your is now being tracked."
       redirect_to sites_path
       else
-      flash[:error] = "There was an error saving the wiki. Please try again."
+      flash[:error] = "Error tracking site. Please try again."
       render :new
     end
   end

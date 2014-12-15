@@ -3,9 +3,8 @@ MAnalytics::Application.routes.draw do
   devise_for :users
 
   resources :sites
+
   resources :events, only: [:create]
-
-
 
   get "welcome/about"
   root to: 'welcome#index'
