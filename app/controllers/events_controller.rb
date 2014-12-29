@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :set_cors_response_headers
+  #before_action :set_cors_response_headers
   skip_before_action :verify_authenticity_token
   respond_to :json
 
@@ -8,8 +8,26 @@ class EventsController < ApplicationController
     @site = Site.find(params[:id])
     event = @site.events.build(event_params)
 
+
+    # miki: grab informatiom from rails request headers, like referer
+      # event.origin_url = 
+
+    referer         = request.referer
+    page            = request.fullpath
+    client_ip       = request.remote_ip
+    server_software = request.server_software
+    #content_length  = request.content_length
+    #body            = request.raw_post
+
+    date            =  request.headers["Date"]
+    client_email    =  request.headers["From"] 
+    client_browser  =  request.headers["User-Agent"]
+
+    hostname        = request.env["REMOTE_HOST"]
+    username        = request.env["HTTP_REMOTE_USER"]s
+
     if event.save
-      respond_with "ok"
+      render nothing: true, status: 200
     else
       respond_with event.errors
     end
@@ -19,14 +37,14 @@ class EventsController < ApplicationController
   private
 
   def event_params
-      params.require(:event).permit(:name, :property_1, :property_2)
+      params.require(:event).permit(:user_id, :site_id, :name, :property_1, :property_2)
   end
 
-  def set_cors_response_headers
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = "POST, GET, OPTIONS"
-    response.headers['Access-Control-Allow-Headers'] = "Content-Type"
-    response.headers['Access-Control-Max-Age'] = 1728000
-  end
+  # def set_cors_response_headers
+  #   response.headers['Access-Control-Allow-Origin'] = '*'
+  #   response.headers['Access-Control-Allow-Methods'] = "POST, GET, OPTIONS"
+  #   response.headers['Access-Control-Allow-Headers'] = "Content-Type"
+  #   response.headers['Access-Control-Max-Age'] = 1728000
+  # end
 
 end

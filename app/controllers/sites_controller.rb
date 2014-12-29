@@ -7,9 +7,8 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
-    # @events = @site.events
-    @events = Event.all
-
+    @events = @site.events
+    # @events = Event.all
   end
 
   def new
@@ -21,7 +20,7 @@ class SitesController < ApplicationController
 
 
     if @site.save
-      flash[:notice] = "Your is now being tracked."
+      flash[:notice] = "Your site is now being tracked."
       redirect_to sites_path
       else
       flash[:error] = "Error tracking site. Please try again."

@@ -5,6 +5,7 @@ MAnalytics::Application.routes.draw do
   resources :sites
 
   resources :events, only: [:create]
+  # match 'events' => "events#index", via: :options
 
   get "welcome/about"
   root to: 'welcome#index'
