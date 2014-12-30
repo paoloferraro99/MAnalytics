@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211010258) do
+ActiveRecord::Schema.define(version: 20141230014733) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20141211010258) do
     t.datetime "updated_on"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "referer"
+    t.string   "page"
+    t.string   "client_ip"
+    t.string   "server_software"
+    t.string   "date"
+    t.string   "client_email"
+    t.string   "client_browser"
+    t.string   "hostname"
+    t.string   "username"
   end
 
   add_index "events", ["site_id"], name: "index_events_on_site_id"

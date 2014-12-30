@@ -37,7 +37,20 @@ class EventsController < ApplicationController
   private
 
   def event_params
-      params.require(:event).permit(:user_id, :site_id, :name, :property_1, :property_2)
+    params.require(:event).permit(:user_id, 
+      :site_id, 
+      :name, 
+      :property_1, 
+      :property_2, 
+      :referer,
+      :page,
+      :client_ip,
+      :server_software,
+      :date,
+      :client_email,
+      :client_browser,
+      :hostname,
+      :username)
   end
 
   # def set_cors_response_headers
